@@ -1,0 +1,30 @@
+% Defines dynamics of the Hodkin-Huxley system
+
+function z = ydot(t, w, pa, pb, pulse)
+    % Parameters of the model
+    Cm = 1;        % Membrane capacitance (μF/cm²)
+    gNa = 120;     % Maximum sodium conductance (mS/cm²)
+    gK = 36;       % Maximum potassium conductance (mS/cm²)
+    gL = 0.3;      % Leak conductance (mS/cm²)
+    ENa = 50;      % Sodium reversal potential (mV)
+    EK = -77;      % Potassium reversal potential (mV)
+    EL = -54.4;    % Leak reversal potential (mV)
+
+    % For now, let's assume the input current is given
+    %  by a square pulse
+    T = (pa + pb)/2;
+    len = pb - pa;
+    Iext = pulse * (1 - sign(abs(t-T) - len/2)) / 2;
+
+    % Get the current state variables
+    v = w(1);
+    m = w(2);
+    h = w(3);
+    n = w(4);
+
+    % Initialize the output vector
+    z = zeros(1, 4);
+
+    % voltage equation
+    z(1) = 
+
